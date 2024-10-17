@@ -28,12 +28,7 @@ angular.module('myApp', [])
         fetch(fullUrl).
             then(function(response) {return response.json();}).
             then(function(response) {
-                console.log("Response:");
-                console.log(response);
                 for (let i = 0; i < response[1].length; i++) {
-                    console.log("Entered for loop");
-                    console.log(response[1]);
-                    console.log(response[3]);
                     apiResponse.push({'lemma': response[1][i], 'link': response[3][i]});
                 }
                 console.log("Results:");
@@ -66,6 +61,8 @@ angular.module('myApp', [])
 
     $scope.updateResults = function(newResults) {
         $scope.results = newResults;
+        console.log("Display results: ");
+        console.log($scope.results);
     }
 
     // $scope.showResults = function() {
