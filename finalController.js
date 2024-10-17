@@ -64,6 +64,8 @@ angular.module('myApp', [])
         $scope.results = newResults;
         console.log("Display results: ");
         console.log($scope.results);
+        console.log("New Return");
+        return $scope.results;
     }
 
     // $scope.showResults = function() {
