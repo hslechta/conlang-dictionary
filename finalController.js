@@ -33,9 +33,13 @@ angular.module('myApp', [])
                     console.log("Entered for loop");
                     console.log(responseArray[1]);
                     console.log(responseArray[3]);
-                    $scope.results.push([responseArray[1][i], responseArray[3][i]]);
+                    let tempArray = [];
+                    tempArray.push(responseArray[1][i]);
+                    tempArray.push(responseArray[3][i]);
+                    console.log(tempArray);
+                    results.push(tempArray);
                 }
-                console.log("Results " + $scope.results);
+                console.log("Results " + results);
                 }).catch(function(error) {console.log(error);});
     }
 
