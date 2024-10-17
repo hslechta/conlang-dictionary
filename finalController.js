@@ -43,5 +43,9 @@ angular.module('myApp', [])
         window.localStorage.setItem("conlang_wordlist", JSON.stringify($scope.words));
     }
 
+    $scope.$watch('results', function() {
+        console.log("Results changed");
+    })
+
     }
 );
