@@ -26,9 +26,12 @@ angular.module('myApp', [])
             then(function(response) {return response.json();}).
             then(function(response) {
                 console.log("Response " + response);
-                for (let i = 0; i < response.length; i++) {
+                let responseArray = response;
+                for (let i = 0; i < responseArray.length; i++) {
                     console.log("Entered for loop");
-                    $scope.results.push([response[1][i], response[3][i]]);
+                    console.log(responseArray[1]);
+                    console.log(responseArray[3]);
+                    $scope.results.push([responseArray[1][i], responseArray[3][i]]);
                 }
                 console.log("Results " + $scope.results);
                 }).catch(function(error) {console.log(error);});
