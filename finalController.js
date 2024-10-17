@@ -69,12 +69,9 @@ angular.module('myApp', [])
     //     hasResults = true;
     // }
 
-    // $scope.$watch('results', function() {
-    //     console.log("Results changed");
-    //     if (results) {
-    //         $scope.showResults();
-    //     }
-    // })
+    $scope.$watch('results', function() {
+        console.log("Results changed");
+    }, true)
 
     }
 );
