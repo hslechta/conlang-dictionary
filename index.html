@@ -49,5 +49,22 @@
                 </tr>
             </tfoot>
         </table>
+        <table ng-if="results">
+            <caption>Word Check Results</caption>
+            <thead>
+                <tr>
+                    <th>Word/Lemma:</th>
+                </tr>
+                <tr>
+                    <th>Link:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="result in results">
+                    <td>{{result.lemma}}</td>
+                    <td>{{result.link}}</td>
+                </tr>
+            </tbody>
+        </table>
     </body>
 </html>

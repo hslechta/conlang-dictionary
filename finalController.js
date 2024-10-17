@@ -8,6 +8,7 @@ angular.module('myApp', [])
         {lemma: 'pes', definition: 'dog', category: 'animal'}
     ];
     const apiUrl = "https://en.wiktionary.org/w/api.php";
+    let results = [];
     let newWord;
 
     if (window.localStorage.getItem("conlang_wordlist")) {
@@ -21,7 +22,15 @@ angular.module('myApp', [])
         let sendWord = $scope.words[index].lemma;
         console.log(sendWord);
         let fullUrl = apiUrl + "?origin=*&action=opensearch&search=" + sendWord + "&namespace=*";
-        fetch(fullUrl).then(function(response) {return response.json();}).then(function(response) { console.log(response);}).catch(function(error) {console.log(error);});
+        fetch(fullUrl).
+            then(function(response) {return response.json();}).
+            then(function(response) {
+                console.log(response);
+                for (let i = 0; i < response.length; i++) {
+                    $scope.results.push([response[1][i], response[3][i]]);
+                }
+                console.log($scope.results);
+                }).catch(function(error) {console.log(error);});
     }
 
     $scope.addWord = function() {
