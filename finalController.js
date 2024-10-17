@@ -25,11 +25,12 @@ angular.module('myApp', [])
         fetch(fullUrl).
             then(function(response) {return response.json();}).
             then(function(response) {
-                console.log(response);
+                console.log("Response " + response);
                 for (let i = 0; i < response.length; i++) {
+                    console.log("Entered for loop");
                     $scope.results.push([response[1][i], response[3][i]]);
                 }
-                console.log($scope.results);
+                console.log("Results " + $scope.results);
                 }).catch(function(error) {console.log(error);});
     }
 
