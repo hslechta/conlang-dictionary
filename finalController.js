@@ -64,8 +64,14 @@ angular.module('myApp', [])
         $scope.results = newResults;
         console.log("Display results: ");
         console.log($scope.results);
+        $scope.$apply();
+        console.log("Apply has run");
         console.log("New Return");
         return $scope.results;
+    }
+
+    $scope.uploadFile = function() {
+        console.log("Opening file...");
     }
 
     // $scope.showResults = function() {
