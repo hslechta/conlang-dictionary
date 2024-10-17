@@ -9,9 +9,9 @@ angular.module('myApp', [])
     ];
     const apiUrl = "https://en.wiktionary.org/w/api.php";
     const addDialog = document.getElementById("addDialog");
-    let results = [];
-    let newWord;
-    let hasResults = false;
+    // let hasResults = false;
+
+    $scope.newWord = {lemma: '', definition: '', category: ''};
 
     if (window.localStorage.getItem("conlang_wordlist")) {
         $scope.words = JSON.parse(window.localStorage.getItem("conlang_wordlist"));
@@ -33,15 +33,11 @@ angular.module('myApp', [])
                     console.log("Entered for loop");
                     console.log(response[1]);
                     console.log(response[3]);
-                    // let tempArray = [];
-                    // tempArray.push(responseArray[1][i]);
-                    // tempArray.push(responseArray[3][i]);
-                    // console.log(tempArray);
-                    // results.push(tempArray);
-                    results.push({'lemma': response[1][i], 'link': response[3][i]});
+                    $scope.results.push({'lemma': response[1][i], 'link': response[3][i]});
                 }
                 console.log("Results:");
-                console.log(results);
+                console.log($scope.results);
+                console.log($scope.results[0]);
                 }).catch(function(error) {console.log(error);});
     }
 
@@ -52,12 +48,13 @@ angular.module('myApp', [])
     }
 
     $scope.confirmAdd = function() {
-        $scope.words.push(newWord);
+        console.log($scope.newWord);
+        $scope.words.push($scope.newWord);
         addDialog.close();
     }
 
     $scope.cancelAdd = function() {
-        newWord = null;
+        $scope.newWord = {lemma: '', definition: '', category: ''};
         addDialog.close();
     }
 
@@ -65,16 +62,16 @@ angular.module('myApp', [])
         window.localStorage.setItem("conlang_wordlist", JSON.stringify($scope.words));
     }
 
-    $scope.showResults = function() {
-        hasResults = true;
-    }
+    // $scope.showResults = function() {
+    //     hasResults = true;
+    // }
 
-    $scope.$watch('results', function() {
-        console.log("Results changed");
-        if (results) {
-            $scope.showResults();
-        }
-    })
+    // $scope.$watch('results', function() {
+    //     console.log("Results changed");
+    //     if (results) {
+    //         $scope.showResults();
+    //     }
+    // })
 
     }
 );
