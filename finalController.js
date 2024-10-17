@@ -12,6 +12,7 @@ angular.module('myApp', [])
     // let hasResults = false;
 
     $scope.newWord = {lemma: '', definition: '', category: ''};
+    $scope.results = [];
 
     if (window.localStorage.getItem("conlang_wordlist")) {
         $scope.words = JSON.parse(window.localStorage.getItem("conlang_wordlist"));
