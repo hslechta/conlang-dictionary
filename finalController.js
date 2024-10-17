@@ -9,7 +9,7 @@ angular.module('myApp', [])
     ];
     const apiUrl = "https://en.wiktionary.org/w/api.php";
     const addDialog = document.getElementById("addDialog");
-    let results = [];
+    let apiResponse = [];
     // let hasResults = false;
 
     $scope.newWord = {lemma: '', definition: '', category: ''};
@@ -34,11 +34,12 @@ angular.module('myApp', [])
                     console.log("Entered for loop");
                     console.log(response[1]);
                     console.log(response[3]);
-                    results.push({'lemma': response[1][i], 'link': response[3][i]});
+                    apiResponse.push({'lemma': response[1][i], 'link': response[3][i]});
                 }
                 console.log("Results:");
-                console.log(results);
-                console.log(results[0]);
+                console.log(apiResponse);
+                console.log(apiResponse[0]);
+                $scope.updateResults(apiResponse);
                 }).catch(function(error) {console.log(error);});
     }
 
@@ -61,6 +62,10 @@ angular.module('myApp', [])
 
     $scope.saveList = function() {
         window.localStorage.setItem("conlang_wordlist", JSON.stringify($scope.words));
+    }
+
+    $scope.updateResults = function(newResults) {
+        $scope.results = newResults;
     }
 
     // $scope.showResults = function() {
