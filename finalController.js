@@ -22,6 +22,7 @@ angular.module('myApp', [])
     }
     
     $scope.checkWord = function(index) {
+        apiResponse = [];
         let sendWord = $scope.words[index].lemma;
         console.log(sendWord);
         let fullUrl = apiUrl + "?origin=*&action=opensearch&search=" + sendWord + "&namespace=*";
@@ -71,6 +72,7 @@ angular.module('myApp', [])
 
     $scope.$watch('results', function() {
         console.log("Results changed");
+        $scope.updateResults(apiResponse);
     }, true)
 
     }
