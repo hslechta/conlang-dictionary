@@ -20,7 +20,7 @@ angular.module('myApp', [])
     $scope.checkWord = function(index) {
         let sendWord = $scope.words[index].lemma;
         console.log(sendWord);
-        let fullUrl = apiUrl + "?action=opensearch&search=" + sendWord + "&namespace=*";
+        let fullUrl = apiUrl + "?origin=*&action=opensearch&search=" + sendWord + "&namespace=*";
         fetch(fullUrl).then(function(response) {return response.json();}).then(function(response) { console.log(response);}).catch(function(error) {console.log(error);});
     }
 
