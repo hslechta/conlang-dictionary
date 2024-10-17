@@ -11,6 +11,7 @@ angular.module('myApp', [])
     const addDialog = document.getElementById("addDialog");
     let results = [];
     let newWord;
+    let hasResults = false;
 
     if (window.localStorage.getItem("conlang_wordlist")) {
         $scope.words = JSON.parse(window.localStorage.getItem("conlang_wordlist"));
@@ -30,7 +31,7 @@ angular.module('myApp', [])
                 console.log(response);
                 let responseArray = response;
                 console.log(responseArray);
-                for (let i = 0; i < responseArray.length; i++) {
+                for (let i = 0; i < responseArray[1].length; i++) {
                     console.log("Entered for loop");
                     console.log(responseArray[1]);
                     console.log(responseArray[3]);
@@ -40,13 +41,15 @@ angular.module('myApp', [])
                     console.log(tempArray);
                     results.push(tempArray);
                 }
-                console.log("Results " + results);
+                console.log("Results:");
+                console.log(results);
                 }).catch(function(error) {console.log(error);});
     }
 
     $scope.addWord = function() {
         console.log("Adding a word");
         // Create dialog box - have it update newWord - push newWord to words
+        $scope.addDialog = getElementById("addDialog");
         $scope.addDialog.showModal();
     }
 
@@ -64,8 +67,15 @@ angular.module('myApp', [])
         window.localStorage.setItem("conlang_wordlist", JSON.stringify($scope.words));
     }
 
+    $scope.showResults = function() {
+        $scope.hasResults = true;
+    }
+
     $scope.$watch('results', function() {
         console.log("Results changed");
+        if (results) {
+            $scope.showResults();
+        }
     })
 
     }
