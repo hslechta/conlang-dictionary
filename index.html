@@ -1,13 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" ng-app="myApp">
     <head>
         <title>CS701 Final Project - Slechta</title>
+
+        <script src="./js/angular182.js"></script>
+        <script src="finalController.js"></script>
+        <link rel="stylesheet" href="./css/final.css">
     </head>
-    <body>
-        <ol>
-            <li>
-                <a href="angular182.js" target=_page2>angular182.js</a>
-            </li>
-        </ol>
+
+    <body ng-controller="FinalController">
+        <h1>ConLang Dictionary Manager</h1>
+        <table>
+            <caption>My Words</caption>
+            <thead>
+                <tr>
+                    <th>Lemma</th>
+                    <th>Definition</th>
+                    <th>Category</th>
+                    <th>Word Check</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="word in words">
+                    <td>{{word.lemma}}</td>
+                    <td>{{word.definition}}</td>
+                    <td>{{word.category}}</td>
+                    <td>
+                        <button ng-click="checkWord($index)">
+                            Check This Word
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2">
+                        <a href="addWord.html">
+                            <button>
+                                New Word
+                            </button>
+                        </a>
+                    </td>
+                    <td colspan="2">
+                        <button ng-click="saveList()">
+                            Save Word List
+                        </button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
     </body>
 </html>
