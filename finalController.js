@@ -8,6 +8,7 @@ angular.module('myApp', [])
         {lemma: 'pes', definition: 'dog', category: 'animal'}
     ];
     const apiUrl = "https://en.wiktionary.org/w/api.php";
+    const addDialog = document.getElementById("addDialog");
     let results = [];
     let newWord;
 
@@ -46,6 +47,17 @@ angular.module('myApp', [])
     $scope.addWord = function() {
         console.log("Adding a word");
         // Create dialog box - have it update newWord - push newWord to words
+        $scope.addDialog.showModal();
+    }
+
+    $scope.confirmAdd = function() {
+        $scope.words.push(newWord);
+        $scope.addDialog.close();
+    }
+
+    $scope.cancelAdd = function() {
+        $scope.newWord = null;
+        $scope.addDialog.close();
     }
 
     $scope.saveList = function() {

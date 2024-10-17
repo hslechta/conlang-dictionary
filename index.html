@@ -52,8 +52,6 @@
             <thead>
                 <tr>
                     <th>Word/Lemma:</th>
-                </tr>
-                <tr>
                     <th>Link:</th>
                 </tr>
             </thead>
@@ -65,4 +63,26 @@
             </tbody>
         </table>
     </body>
+
+    <dialog id="addDialog">
+        <p>Enter a word, a definition, and a category:</p>
+        <label>
+            Word/Lemma:
+            <input autofocus ng-model="newWord.lemma" size="20">
+        </label>
+        <label>
+            Definition:
+            <input ng-model="newWord.definition" size="20">
+        </label>
+        <label>
+            Category:
+            <input ng-model="newWord.category" size="20">
+        </label>
+        <button ng-click="confirmAdd()">
+            Add This Word
+        </button>
+        <button ng-click="cancelAdd()">
+            Nevermind
+        </button>
+    </dialog>
 </html>
