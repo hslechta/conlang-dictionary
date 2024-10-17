@@ -10,7 +10,6 @@ angular.module('myApp', [])
     const apiUrl = "https://en.wiktionary.org/w/api.php";
     const addDialog = document.getElementById("addDialog");
     let apiResponse = [];
-    // let hasResults = false;
 
     $scope.newWord = {lemma: '', definition: '', category: ''};
 
@@ -24,7 +23,6 @@ angular.module('myApp', [])
     $scope.checkWord = function(index) {
         apiResponse = [];
         let sendWord = $scope.words[index].lemma;
-        console.log(sendWord);
         let fullUrl = apiUrl + "?origin=*&action=opensearch&search=" + sendWord + "&namespace=*";
         fetch(fullUrl).
             then(function(response) {return response.json();}).
@@ -32,21 +30,15 @@ angular.module('myApp', [])
                 for (let i = 0; i < response[1].length; i++) {
                     apiResponse.push({'lemma': response[1][i], 'link': response[3][i]});
                 }
-                console.log("Results:");
-                console.log(apiResponse);
-                console.log(apiResponse[0]);
                 $scope.updateResults(apiResponse);
                 }).catch(function(error) {console.log(error);});
     }
 
     $scope.addWord = function() {
-        console.log("Adding a word");
-        // Create dialog box - have it update newWord - push newWord to words
         addDialog.showModal();
     }
 
     $scope.confirmAdd = function() {
-        console.log($scope.newWord);
         $scope.words.push($scope.newWord);
         addDialog.close();
     }
@@ -62,26 +54,26 @@ angular.module('myApp', [])
 
     $scope.updateResults = function(newResults) {
         $scope.results = newResults;
-        console.log("Display results: ");
-        console.log($scope.results);
-        $scope.$apply();
-        console.log("Apply has run");
-        console.log("New Return");
-        return $scope.results;
+        $scope.$apply();  // this line creates a few error messages, but it updates the DOM
     }
 
     $scope.uploadFile = function() {
         console.log("Opening file...");
+        let fileInput = document.getElementById(fileUpload);
+        fileInput.addEventListener('change', displayFile, false);
     }
 
-    // $scope.showResults = function() {
-    //     hasResults = true;
-    // }
+    displayFile = function(event) {
+        console.log("Displaying file...");
+        let file = event.target.files;
+        console.log(file.item(0));
+        // $scope.words = JSON.parse(file.item(0));
+    }
 
-    $scope.$watch('results', function() {
-        console.log("Results changed");
-        $scope.updateResults(apiResponse);
-    }, true)
+    // $scope.$watch('results', function() {
+    //     console.log("Results changed");
+    //     $scope.updateResults(apiResponse);
+    // }, true)
 
     }
 );
