@@ -41,8 +41,7 @@ angular.module('myApp', [])
 
     $scope.addWord = function() {
         console.log("Adding a word");
-        // This doesn't seem to work yet. Need to do more bug testing.
-        $scope.words.push(newWord);
+        // Create dialog box - have it update newWord - push newWord to words
     }
 
     $scope.saveList = function() {
