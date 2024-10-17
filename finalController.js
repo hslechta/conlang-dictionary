@@ -25,8 +25,10 @@ angular.module('myApp', [])
         fetch(fullUrl).
             then(function(response) {return response.json();}).
             then(function(response) {
-                console.log("Response " + response);
+                console.log("Response:");
+                console.log(response);
                 let responseArray = response;
+                console.log(responseArray);
                 for (let i = 0; i < responseArray.length; i++) {
                     console.log("Entered for loop");
                     console.log(responseArray[1]);
