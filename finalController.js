@@ -9,6 +9,7 @@ angular.module('myApp', [])
     ];
     const apiUrl = "https://en.wiktionary.org/w/api.php";
     const addDialog = document.getElementById("addDialog");
+    const downloadDialog = document.getElementById("downloadDialog");
     let apiResponse = [];
 
     $scope.newWord = {lemma: '', definition: '', category: ''};
@@ -58,12 +59,12 @@ angular.module('myApp', [])
     }
 
     $scope.saveFile = function() {
-        const fileLink = document.createElement('a');
-        const newFile = new File(JSON.stringify($scope.words), "conlang_save.txt", {type: "text/plain"});
-        fileLink.href = URL.createObjectURL(newFile);
-        fileLink.download = "saveFile.txt";
-        fileLink.click();
-        URL.revokeObjectURL(fileLink.href);
+        $scope.downloadText = JSON.stringify($scope.words);
+        downloadDialog.showModal();
+    }
+
+    $scope.closeDownload = function() {
+        downloadDialog.close();
     }
 
     $scope.updateResults = function(newResults) {
@@ -75,12 +76,8 @@ angular.module('myApp', [])
         console.log("Opening file...");
         let fileInput = document.getElementById(fileUpload).files[0];
         $scope.words = JSON.parse(fileInput);
+        console.log($scope.words);
     }
-
-    // $scope.$watch('results', function() {
-    //     console.log("Results changed");
-    //     $scope.updateResults(apiResponse);
-    // }, true)
 
     }
 );

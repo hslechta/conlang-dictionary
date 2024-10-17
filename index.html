@@ -18,6 +18,7 @@
                     <th>Definition</th>
                     <th>Category</th>
                     <th>Word Check</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -71,7 +72,11 @@
             <tbody>
                 <tr ng-repeat="result in results">
                     <td>{{result.lemma}}</td>
-                    <td>{{result.link}}</td>
+                    <td>
+                        <a href={{result.link}}>
+                            {{result.link}}
+                        </a>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -96,6 +101,14 @@
         </button>
         <button ng-click="cancelAdd()">
             Nevermind
+        </button>
+    </dialog>
+
+    <dialog id="downloadDialog">
+        <p>Copy and paste the following text into a .txt file:</p>
+        <p>{{downloadText}}</p>
+        <button ng-click="closeDownload()">
+            Close
         </button>
     </dialog>
 </html>
