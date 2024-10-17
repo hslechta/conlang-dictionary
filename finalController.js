@@ -20,6 +20,10 @@ angular.module('myApp', [])
     else {
         $scope.words = exampleWords;
     }
+
+    $scope.generateWords = function() {
+        console.log("Generating words...");
+    }
     
     $scope.checkWord = function(index) {
         apiResponse = [];
@@ -75,6 +79,7 @@ angular.module('myApp', [])
     $scope.uploadFile = function() {
         console.log("Opening file...");
         let fileInput = document.getElementById(fileUpload).files[0];
+        console.log(fileInput);
         $scope.words = JSON.parse(fileInput);
         console.log($scope.words);
     }

@@ -10,7 +10,14 @@
 
     <body ng-controller="FinalController">
         <h1>ConLang Dictionary Manager</h1>
-        <table>
+        <div>
+            <h3>Word Generator</h3>
+            <a href="#wordList">Skip to Word List</a>
+            <button ng-click="generateWords()">
+                Generate Words
+            </button>
+        </div>
+        <table id="wordList">
             <caption>My Words</caption>
             <thead>
                 <tr>
@@ -56,7 +63,12 @@
                         </button>
                     </td>
                     <td>
-                        <input type="file" id="fileUpload" name="fileUpload" ng-click="uploadFile()"/>
+                        <input type="file" id="fileUpload" name="fileUpload"/>
+                    </td>
+                    <td>
+                        <button ng-click="uploadFile()">
+                            Upload Saved File
+                        </button>
                     </td>
                 </tr>
             </tfoot>
