@@ -34,7 +34,12 @@ angular.module('myApp', [])
                 }).catch(function(error) {console.log(error);});
     }
 
+    $scope.deleteWord = function(index) {
+        $scope.words.splice(index, 1);
+    }
+
     $scope.addWord = function() {
+        $scope.newWord = {lemma: '', definition: '', category: ''};
         addDialog.showModal();
     }
 
@@ -52,22 +57,24 @@ angular.module('myApp', [])
         window.localStorage.setItem("conlang_wordlist", JSON.stringify($scope.words));
     }
 
+    $scope.saveFile = function() {
+        const fileLink = document.createElement('a');
+        const newFile = new File(JSON.stringify($scope.words), "conlang_save.txt", {type: "text/plain"});
+        fileLink.href = URL.createObjectURL(newFile);
+        fileLink.download = "saveFile.txt";
+        fileLink.click();
+        URL.revokeObjectURL(fileLink.href);
+    }
+
     $scope.updateResults = function(newResults) {
         $scope.results = newResults;
-        $scope.$apply();  // this line creates a few error messages, but it updates the DOM
+        $scope.$apply();
     }
 
     $scope.uploadFile = function() {
         console.log("Opening file...");
-        let fileInput = document.getElementById(fileUpload);
-        fileInput.addEventListener('change', displayFile, false);
-    }
-
-    displayFile = function(event) {
-        console.log("Displaying file...");
-        let file = event.target.files;
-        console.log(file.item(0));
-        // $scope.words = JSON.parse(file.item(0));
+        let fileInput = document.getElementById(fileUpload).files[0];
+        $scope.words = JSON.parse(fileInput);
     }
 
     // $scope.$watch('results', function() {

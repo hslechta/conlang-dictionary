@@ -30,18 +30,28 @@
                             Check This Word
                         </button>
                     </td>
+                    <td>
+                        <button ng-click="deleteWord($index)">
+                            Delete This Word
+                        </button>
+                    </td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="2">
+                    <td>
                         <button ng-click="addWord()">
                             New Word
                         </button>
                     </td>
                     <td>
                         <button ng-click="saveList()">
-                            Save Word List
+                            Browser Save
+                        </button>
+                    </td>
+                    <td>
+                        <button ng-click="saveFile()">
+                            Download Save
                         </button>
                     </td>
                     <td>
