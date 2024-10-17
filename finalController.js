@@ -29,17 +29,16 @@ angular.module('myApp', [])
             then(function(response) {
                 console.log("Response:");
                 console.log(response);
-                let responseArray = response;
-                console.log(responseArray);
-                for (let i = 0; i < responseArray[1].length; i++) {
+                for (let i = 0; i < response[1].length; i++) {
                     console.log("Entered for loop");
-                    console.log(responseArray[1]);
-                    console.log(responseArray[3]);
-                    let tempArray = [];
-                    tempArray.push(responseArray[1][i]);
-                    tempArray.push(responseArray[3][i]);
-                    console.log(tempArray);
-                    results.push(tempArray);
+                    console.log(response[1]);
+                    console.log(response[3]);
+                    // let tempArray = [];
+                    // tempArray.push(responseArray[1][i]);
+                    // tempArray.push(responseArray[3][i]);
+                    // console.log(tempArray);
+                    // results.push(tempArray);
+                    results.push({'lemma': response[1][i], 'link': response[3][i]});
                 }
                 console.log("Results:");
                 console.log(results);
@@ -49,18 +48,17 @@ angular.module('myApp', [])
     $scope.addWord = function() {
         console.log("Adding a word");
         // Create dialog box - have it update newWord - push newWord to words
-        $scope.addDialog = getElementById("addDialog");
-        $scope.addDialog.showModal();
+        addDialog.showModal();
     }
 
     $scope.confirmAdd = function() {
         $scope.words.push(newWord);
-        $scope.addDialog.close();
+        addDialog.close();
     }
 
     $scope.cancelAdd = function() {
-        $scope.newWord = null;
-        $scope.addDialog.close();
+        newWord = null;
+        addDialog.close();
     }
 
     $scope.saveList = function() {
@@ -68,7 +66,7 @@ angular.module('myApp', [])
     }
 
     $scope.showResults = function() {
-        $scope.hasResults = true;
+        hasResults = true;
     }
 
     $scope.$watch('results', function() {
