@@ -146,82 +146,94 @@
                     <input type="checkbox" id="z" class="consonant" checked>
                 </label>
             </fieldset>
-            <button ng-click="generateWords()">
-                Generate Words
+            <fieldset>
+                <label>
+                    Enter a definition for your next generated word:
+                    <input size="20" ng-model="generatedWord.definition">
+                </label>
+                <label>
+                    Enter a category for your next generated word:
+                    <input size="20" ng-model="generatedWord.category">
+                </label>
+            </fieldset>
+            <button ng-click="generateWord()">
+                Generate Word
             </button>
         </div>
-        <table id="wordList">
-            <caption>My Words</caption>
-            <thead>
-                <tr>
-                    <th>Lemma</th>
-                    <th>Definition</th>
-                    <th>Category</th>
-                    <th>Word Check</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="word in words">
-                    <td>{{word.lemma}}</td>
-                    <td>{{word.definition}}</td>
-                    <td>{{word.category}}</td>
-                    <td>
-                        <button ng-click="checkWord($index)">
-                            Check This Word
-                        </button>
-                    </td>
-                    <td>
-                        <button ng-click="deleteWord($index)">
-                            Delete This Word
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="2">
-                        <button ng-click="addWord()">
-                            New Word
-                        </button>
-                    </td>
-                    <td>
-                        <button ng-click="saveList()">
-                            Browser Save
-                        </button>
-                    </td>
-                    <td>
-                        <button ng-click="saveFile()">
-                            Download Save
-                        </button>
-                    </td>
-                    <td>
-                        <button ng-click="uploadFile()">
-                            Upload Saved File
-                        </button>
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
-        <table>
-            <caption>Word Check Results</caption>
-            <thead>
-                <tr>
-                    <th>Word/Lemma:</th>
-                    <th>Link:</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="result in results">
-                    <td>{{result.lemma}}</td>
-                    <td>
-                        <a href={{result.link}}>
-                            {{result.link}}
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div>
+            <table id="wordList">
+                <caption>My Words</caption>
+                <thead>
+                    <tr>
+                        <th>Lemma</th>
+                        <th>Definition</th>
+                        <th>Category</th>
+                        <th>Word Check</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="word in words">
+                        <td>{{word.lemma}}</td>
+                        <td>{{word.definition}}</td>
+                        <td>{{word.category}}</td>
+                        <td>
+                            <button ng-click="checkWord($index)">
+                                Check This Word
+                            </button>
+                        </td>
+                        <td>
+                            <button ng-click="deleteWord($index)">
+                                Delete This Word
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">
+                            <button ng-click="addWord()">
+                                New Word
+                            </button>
+                        </td>
+                        <td>
+                            <button ng-click="saveList()">
+                                Browser Save
+                            </button>
+                        </td>
+                        <td>
+                            <button ng-click="saveFile()">
+                                Download Save
+                            </button>
+                        </td>
+                        <td>
+                            <button ng-click="uploadFile()">
+                                Upload Saved File
+                            </button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <table>
+                <caption>Word Check Results</caption>
+                <thead>
+                    <tr>
+                        <th>Word/Lemma:</th>
+                        <th>Link:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="result in results">
+                        <td>{{result.lemma}}</td>
+                        <td>
+                            <a href={{result.link}}>
+                                {{result.link}}
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </body>
 
     <dialog id="addDialog">

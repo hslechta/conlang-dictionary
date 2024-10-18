@@ -16,6 +16,7 @@ label {
 }
 
 table {
+    width: 100%;
     margin: 20px;
     border: 1px solid darkblue;
 }
