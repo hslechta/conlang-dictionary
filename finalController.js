@@ -94,7 +94,6 @@ angular.module('myApp', [])
         fetch(fullUrl).
             then(function(response) {return response.json();}).
             then(function(response) {
-                console.log(response);
                 if (response[1].length == 0) {
                     errorDialog.showModal();
                 }
