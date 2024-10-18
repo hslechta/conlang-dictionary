@@ -20,13 +20,17 @@ table {
     border: 1px solid darkblue;
 }
 
-td {
+caption {
+    margin: 5px;
+}
+
+td, th {
     text-align: center;
     margin: 2px;
     border: 1px solid darkblue;
 }
 
-p, a, h1, h3 {
+p, a, h1, h3, div {
     text-align: center;
 }
 

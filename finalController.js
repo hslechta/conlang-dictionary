@@ -57,7 +57,7 @@ angular.module('myApp', [])
         let vowelFound = false;
         let vowel = '';
         while (!vowelFound) {
-            let randNum = Math.round(Math.random() * vowelElems.length);
+            let randNum = Math.round(Math.random() * (vowelElems.length - 1));
             console.log(randNum);
             let possVowel = vowelElems.item(randNum);
             console.log(possVowel);
@@ -73,7 +73,7 @@ angular.module('myApp', [])
             let consFound = false;
             let onsetLetter = '';
             while (!consFound) {
-                let randNum = Math.round(Math.random() * consElems.length);
+                let randNum = Math.round(Math.random() * (consElems.length - 1));
                 console.log(randNum);
                 let possOnset = consElems.item(randNum);
                 console.log(possOnset);
@@ -90,7 +90,7 @@ angular.module('myApp', [])
             let consFound = false;
             let codaLetter = '';
             while (!consFound) {
-                let randNum = Math.round(Math.random() * consElems.length);
+                let randNum = Math.round(Math.random() * (consElems.length - 1));
                 console.log(randNum);
                 let possCoda = consElems.item(randNum);
                 console.log(possCoda);
