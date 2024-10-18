@@ -39,15 +39,42 @@ angular.module('myApp', [])
     generateSyllable = function(numOnset, numCoda) {
         let vowelElems = document.getElementsByClassName('vowel');
         let consElems = document.getElementsByClassName('consonant');
-        let vowel = vowelElems.item(Math.floor(Math.random() * vowelElems.length)).id;
+        let vowelFound = false;
+        let vowel = '';
+        while (!vowelFound) {
+            let randNum = Math.floor(Math.random() * vowelElems.length);
+            let possVowel = vowelElems.item(randNum);
+            if (possVowel.checked) {
+                vowel = possVowel.id + '';
+                vowelFound = true;
+            }
+        }
         let onset = '';
         let coda = '';
         for (let j = 0; j < numOnset; j++) {
-            let onsetLetter = consElems.item(Math.floor(Math.random() * consElems.length)).id;
+            let consFound = false;
+            let onsetLetter = '';
+            while (!consFound) {
+                let randNum = Math.floor(Math.random() * consElems.length);
+                let possOnset = consElems.item(randNum);
+                if (possOnset.checked) {
+                    onsetLetter = possOnset.id + '';
+                    consFound = true;
+                }
+            }
             onset += onsetLetter;
         }
         for (let k = 0; k < numCoda; k++) {
-            let codaLetter = consElems.item(Math.floor(Math.random() * consElems.length)).id;
+            let consFound = false;
+            let codaLetter = '';
+            while (!consFound) {
+                let randNum = Math.floor(Math.random() * consElems.length);
+                let possCoda = consElems.item(randNum);
+                if (possCoda.checked) {
+                    codaLetter = possCoda.id + '';
+                    consFound = true;
+                }
+            }
             coda += codaLetter;
         }
         let newSyllable = onset + vowel + coda;
