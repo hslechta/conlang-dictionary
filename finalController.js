@@ -13,6 +13,7 @@ angular.module('myApp', [])
     let apiResponse = [];
 
     $scope.newWord = {lemma: '', definition: '', category: ''};
+    $scope.generator = {syllableCount: 2, onsetConsCount: 2, codaConsCount: 1};
 
     if (window.localStorage.getItem("conlang_wordlist")) {
         $scope.words = JSON.parse(window.localStorage.getItem("conlang_wordlist"));
@@ -23,6 +24,7 @@ angular.module('myApp', [])
 
     $scope.generateWords = function() {
         console.log("Generating words...");
+        console.log($scope.generator);
     }
     
     $scope.checkWord = function(index) {

@@ -13,6 +13,139 @@
         <div>
             <h3>Word Generator</h3>
             <a href="#wordList">Skip to Word List</a>
+            <fieldset>
+                <p>Onset consonants come before the vowel of a syllable and coda consonants come after the vowel of a syllable</p>
+                <label>
+                    Maximum number of syllables?
+                    <input ng-model="generator.syllableCount">
+                </label>
+                <label>
+                    Maximum number of onset consonants?
+                    <input ng-model="generator.onsetConsCount">
+                </label>
+                <label>
+                    Maximum number of coda consonants?
+                    <input ng-model="generator.codaConsCount">
+                </label>
+            </fieldset>
+            <fieldset>
+                <legend>Choose your language's vowels:</legend>
+                <label>
+                    a
+                    <input type="checkbox" id="a" checked>
+                </label>
+                <label>
+                    e
+                    <input type="checkbox" id="e" checked>
+                </label>
+                <label>
+                    i
+                    <input type="checkbox" id="i" checked>
+                </label>
+                <label>
+                    o
+                    <input type="checkbox" id="o" checked>
+                </label>
+                <label>
+                    u
+                    <input type="checkbox" id="u" checked>
+                </label>
+                <label>
+                    w
+                    <input type="checkbox" id="w" checked>
+                </label>
+                <label>
+                    y
+                    <input type="checkbox" id="y" checked>
+                </label>
+            </fieldset>
+            <fieldset>
+                <legend>Choose your language's consonants:</legend>
+                <label>
+                    b
+                    <input type="checkbox" id="b" checked>
+                </label>
+                <label>
+                    c
+                    <input type="checkbox" id="c" checked>
+                </label>
+                <label>
+                    d
+                    <input type="checkbox" id="d" checked>
+                </label>
+                <label>
+                    f
+                    <input type="checkbox" id="f" checked>
+                </label>
+                <label>
+                    g
+                    <input type="checkbox" id="g" checked>
+                </label>
+                <label>
+                    h
+                    <input type="checkbox" id="h" checked>
+                </label>
+                <label>
+                    j
+                    <input type="checkbox" id="j" checked>
+                </label>
+                <label>
+                    k
+                    <input type="checkbox" id="k" checked>
+                </label>
+                <label>
+                    l
+                    <input type="checkbox" id="l" checked>
+                </label>
+                <label>
+                    m
+                    <input type="checkbox" id="m" checked>
+                </label>
+                <label>
+                    n
+                    <input type="checkbox" id="n" checked>
+                </label>
+                <label>
+                    p
+                    <input type="checkbox" id="p" checked>
+                </label>
+                <label>
+                    q
+                    <input type="checkbox" id="q" checked>
+                </label>
+                <label>
+                    r
+                    <input type="checkbox" id="r" checked>
+                </label>
+                <label>
+                    s
+                    <input type="checkbox" id="s" checked>
+                </label>
+                <label>
+                    t
+                    <input type="checkbox" id="t" checked>
+                </label>
+                <label>
+                    v
+                    <input type="checkbox" id="v" checked>
+                </label>
+                <label>
+                    w
+                    <input type="checkbox" id="w" checked>
+                </label>
+                <label>
+                    x
+                    <input type="checkbox" id="x" checked>
+                </label>
+                <label>
+                    y
+                    <input type="checkbox" id="y" checked>
+                </label>
+                <label>
+                    z
+                    <input type="checkbox" id="z" checked>
+                </label>
+            </fieldset>
             <button ng-click="generateWords()">
                 Generate Words
             </button>
