@@ -25,13 +25,15 @@ angular.module('myApp', [])
     $scope.generateWords = function() {
         console.log("Generating words...");
         console.log($scope.generator);
-        let syllables = Math.floor(Math.random() * $scope.generator.syllableCount);
-        let onsets = Math.floor(Math.random() * $scope.generator.onsetConsCount);
-        let codas = Math.floor(Math.random() * $scope.generator.codaConsCount);
+        let syllables = Math.floor(Math.random() * Number($scope.generator.syllableCount));
+        let onsets = Math.floor(Math.random() * Number($scope.generator.onsetConsCount));
+        let codas = Math.floor(Math.random() * Number($scope.generator.codaConsCount));
         let generatedWord = {lemma: '', definition: 'def', category: 'cat'};
         for (let i = 0; i < syllables; i++) {
             let syll = generateSyllable(onsets, codas);
+            console.log(syll);
             generatedWord.lemma += syll;
+            console.log(generatedWord.lemma);
         }
         $scope.words.push(generatedWord);
     }
