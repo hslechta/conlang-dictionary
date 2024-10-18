@@ -13,11 +13,13 @@ label {
 
 table {
     margin: 20px;
+    border: 1px solid darkblue;
 }
 
 td {
     text-align: center;
     margin: 2px;
+    border: 1px solid darkblue;
 }
 
 p, a, h1, h3 {

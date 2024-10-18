@@ -25,11 +25,14 @@ angular.module('myApp', [])
     $scope.generateWords = function() {
         console.log("Generating words...");
         console.log($scope.generator);
-        let syllables = Math.floor(Math.random() * Number($scope.generator.syllableCount));
+        let syllables = Math.round(Math.random() * Number($scope.generator.syllableCount));
+        if (syllables == 0) {
+            syllables = 1;
+        }
         console.log(syllables);
-        let onsets = Math.floor(Math.random() * Number($scope.generator.onsetConsCount));
+        let onsets = Math.round(Math.random() * Number($scope.generator.onsetConsCount));
         console.log(onsets);
-        let codas = Math.floor(Math.random() * Number($scope.generator.codaConsCount));
+        let codas = Math.round(Math.random() * Number($scope.generator.codaConsCount));
         console.log(codas);
         let generatedWord = {lemma: '', definition: 'def', category: 'cat'};
         for (let i = 0; i < syllables; i++) {
@@ -52,7 +55,7 @@ angular.module('myApp', [])
         let vowelFound = false;
         let vowel = '';
         while (!vowelFound) {
-            let randNum = Math.floor(Math.random() * vowelElems.length);
+            let randNum = Math.round(Math.random() * vowelElems.length);
             let possVowel = vowelElems.item(randNum);
             console.log(possVowel);
             if (possVowel.checked) {
@@ -67,7 +70,7 @@ angular.module('myApp', [])
             let consFound = false;
             let onsetLetter = '';
             while (!consFound) {
-                let randNum = Math.floor(Math.random() * consElems.length);
+                let randNum = Math.round(Math.random() * consElems.length);
                 let possOnset = consElems.item(randNum);
                 console.log(possOnset);
                 if (possOnset.checked) {
@@ -83,7 +86,7 @@ angular.module('myApp', [])
             let consFound = false;
             let codaLetter = '';
             while (!consFound) {
-                let randNum = Math.floor(Math.random() * consElems.length);
+                let randNum = Math.round(Math.random() * consElems.length);
                 let possCoda = consElems.item(randNum);
                 console.log(possCoda);
                 if (possCoda.checked) {
@@ -154,8 +157,8 @@ angular.module('myApp', [])
     $scope.uploadFile = function() {
         console.log(document.getElementById("fileUpload").files);
         let fileInput = document.getElementById("fileUpload").files[0];
-        console.log(fileInput.text());
-        $scope.words = JSON.parse(fileInput.text());
+        console.log(fileInput.text().result);
+        $scope.words = JSON.parse(fileInput.text().result);
         console.log($scope.words);
     }
 
