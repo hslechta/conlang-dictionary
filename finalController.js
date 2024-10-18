@@ -2,10 +2,10 @@ angular.module('myApp', [])
 .controller('FinalController', function ($scope) {
 
     const exampleWords = [
-        {lemma: 'apfel', definition: 'apple', category: 'food'},
-        {lemma: 'banane', definition: 'banana', category: 'food'},
-        {lemma: 'gato', definition: 'cat', category: 'animal'},
-        {lemma: 'pes', definition: 'dog', category: 'animal'}
+        {lemma: 'eqmi', definition: 'apple', category: 'food'},
+        {lemma: 'cepepe', definition: 'banana', category: 'food'},
+        {lemma: 'dev', definition: 'cat', category: 'animal'},
+        {lemma: 'cif', definition: 'dog', category: 'animal'}
     ];
     const apiUrl = "https://en.wiktionary.org/w/api.php";
     const errorDialog = document.getElementById("errorDialog");
@@ -96,7 +96,7 @@ angular.module('myApp', [])
             then(function(response) {
                 console.log(response);
                 if (response[1].length = 0) {
-
+                    errorDialog.showModal();
                 }
                 for (let i = 0; i < response[1].length; i++) {
                     apiResponse.push({'lemma': response[1][i], 'link': response[3][i]});
