@@ -56,6 +56,7 @@ angular.module('myApp', [])
         let vowel = '';
         while (!vowelFound) {
             let randNum = Math.round(Math.random() * vowelElems.length);
+            console.log(randNum);
             let possVowel = vowelElems.item(randNum);
             console.log(possVowel);
             if (possVowel.checked) {
@@ -71,6 +72,7 @@ angular.module('myApp', [])
             let onsetLetter = '';
             while (!consFound) {
                 let randNum = Math.round(Math.random() * consElems.length);
+                console.log(randNum);
                 let possOnset = consElems.item(randNum);
                 console.log(possOnset);
                 if (possOnset.checked) {
@@ -87,6 +89,7 @@ angular.module('myApp', [])
             let codaLetter = '';
             while (!consFound) {
                 let randNum = Math.round(Math.random() * consElems.length);
+                console.log(randNum);
                 let possCoda = consElems.item(randNum);
                 console.log(possCoda);
                 if (possCoda.checked) {
@@ -155,6 +158,8 @@ angular.module('myApp', [])
     }
 
     $scope.uploadFile = function() {
+        // bodge this because it's still not working properly
+        // have user paste the JSON content of their save file into an input box in a dialog
         console.log(document.getElementById("fileUpload").files);
         let fileInput = document.getElementById("fileUpload").files[0];
         console.log(fileInput.text().result);
