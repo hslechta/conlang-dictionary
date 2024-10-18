@@ -95,13 +95,15 @@ angular.module('myApp', [])
             then(function(response) {return response.json();}).
             then(function(response) {
                 console.log(response);
-                if (response[1].length = 0) {
+                if (response[1].length == 0) {
                     errorDialog.showModal();
                 }
-                for (let i = 0; i < response[1].length; i++) {
-                    apiResponse.push({'lemma': response[1][i], 'link': response[3][i]});
+                else {
+                    for (let i = 0; i < response[1].length; i++) {
+                        apiResponse.push({'lemma': response[1][i], 'link': response[3][i]});
+                    }
+                    $scope.updateResults(apiResponse);
                 }
-                $scope.updateResults(apiResponse);
                 }).catch(function(error) {console.log(error);});
     }
 
