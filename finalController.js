@@ -78,7 +78,7 @@ angular.module('myApp', [])
 
     $scope.uploadFile = function() {
         console.log("Opening file...");
-        let fileInput = document.getElementById(fileUpload).files[0];
+        let fileInput = document.getElementById(fileUpload)?.files[0];
         console.log(fileInput);
         $scope.words = JSON.parse(fileInput);
         console.log($scope.words);
