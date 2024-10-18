@@ -256,4 +256,15 @@
             Close
         </button>
     </dialog>
+
+    <dialog id="uploadDialog">
+        <p>Copy and paste the text from your .txt save file into this box:</p>
+        <textarea id="uploadText" rows="10" cols="60" ng-model="uploadWords">Your saved words here...</textarea>
+        <button ng-click="confirmUpload()">
+            Upload
+        </button>
+        <button ng-click="cancelUpload()">
+            Cancel
+        </button>
+    </dialog>
 </html>

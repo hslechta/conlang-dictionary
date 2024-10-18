@@ -10,10 +10,12 @@ angular.module('myApp', [])
     const apiUrl = "https://en.wiktionary.org/w/api.php";
     const addDialog = document.getElementById("addDialog");
     const downloadDialog = document.getElementById("downloadDialog");
+    const uploadDialog = document.getElementById("uploadDialog");
     let apiResponse = [];
 
     $scope.newWord = {lemma: '', definition: '', category: ''};
     $scope.generator = {syllableCount: 2, onsetConsCount: 2, codaConsCount: 1};
+    $scope.uploadWords = [];
 
     if (window.localStorage.getItem("conlang_wordlist")) {
         $scope.words = JSON.parse(window.localStorage.getItem("conlang_wordlist"));
@@ -158,13 +160,18 @@ angular.module('myApp', [])
     }
 
     $scope.uploadFile = function() {
-        // bodge this because it's still not working properly
-        // have user paste the JSON content of their save file into an input box in a dialog
-        console.log(document.getElementById("fileUpload").files);
-        let fileInput = document.getElementById("fileUpload").files[0];
-        console.log(fileInput.text().result);
-        $scope.words = JSON.parse(fileInput.text().result);
-        console.log($scope.words);
+        $scope.uploadWords = [];
+        uploadDialog.showModal();
+    }
+
+    $scope.confirmUpload = function() {
+        $scope.words = JSON.parse($scope.uploadWords);
+        uploadDialog.close();
+    }
+
+    $scope.cancelUpload = function() {
+        $scope.uploadWords = [];
+        uploadDialog.close();
     }
 
     }
