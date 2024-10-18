@@ -236,6 +236,14 @@
         </div>
     </body>
 
+    <dialog id="errorDialog">
+        <p>Congratulations! You've created a unique word!</p>
+        <p>Wiktionary found no words matching this word.</p>
+        <button ng-click="closeError()">
+            Close
+        </button>
+    </dialog>
+
     <dialog id="addDialog">
         <p>Enter a word, a definition, and a category:</p>
         <label>

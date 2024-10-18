@@ -8,6 +8,7 @@ angular.module('myApp', [])
         {lemma: 'pes', definition: 'dog', category: 'animal'}
     ];
     const apiUrl = "https://en.wiktionary.org/w/api.php";
+    const errorDialog = document.getElementById("errorDialog");
     const addDialog = document.getElementById("addDialog");
     const downloadDialog = document.getElementById("downloadDialog");
     const uploadDialog = document.getElementById("uploadDialog");
@@ -37,7 +38,6 @@ angular.module('myApp', [])
             $scope.generatedWord.lemma += syll;
         }
         let tempWord = $scope.generatedWord;
-        console.log(tempWord);
         $scope.words.push(tempWord);
         $scope.generatedWord = {lemma: '', definition: '', category: ''};
     }
@@ -95,6 +95,9 @@ angular.module('myApp', [])
             then(function(response) {return response.json();}).
             then(function(response) {
                 console.log(response);
+                if (response[1].length = 0) {
+
+                }
                 for (let i = 0; i < response[1].length; i++) {
                     apiResponse.push({'lemma': response[1][i], 'link': response[3][i]});
                 }
@@ -104,6 +107,10 @@ angular.module('myApp', [])
 
     $scope.deleteWord = function(index) {
         $scope.words.splice(index, 1);
+    }
+
+    $scope.closeError = function() {
+        errorDialog.close();
     }
 
     $scope.addWord = function() {
