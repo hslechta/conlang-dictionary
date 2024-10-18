@@ -26,28 +26,38 @@ angular.module('myApp', [])
         console.log("Generating words...");
         console.log($scope.generator);
         let syllables = Math.floor(Math.random() * Number($scope.generator.syllableCount));
+        console.log(syllables);
         let onsets = Math.floor(Math.random() * Number($scope.generator.onsetConsCount));
+        console.log(onsets);
         let codas = Math.floor(Math.random() * Number($scope.generator.codaConsCount));
+        console.log(codas);
         let generatedWord = {lemma: '', definition: 'def', category: 'cat'};
         for (let i = 0; i < syllables; i++) {
+            console.log("Entered for loop");
             let syll = generateSyllable(onsets, codas);
             console.log(syll);
             generatedWord.lemma += syll;
             console.log(generatedWord.lemma);
+            console.log(generatedWord);
         }
         $scope.words.push(generatedWord);
     }
 
     generateSyllable = function(numOnset, numCoda) {
+        console.log("Entered helper function");
         let vowelElems = document.getElementsByClassName('vowel');
+        console.log(vowelElems);
         let consElems = document.getElementsByClassName('consonant');
+        console.log(consElems);
         let vowelFound = false;
         let vowel = '';
         while (!vowelFound) {
             let randNum = Math.floor(Math.random() * vowelElems.length);
             let possVowel = vowelElems.item(randNum);
+            console.log(possVowel);
             if (possVowel.checked) {
                 vowel = possVowel.id + '';
+                console.log(vowel);
                 vowelFound = true;
             }
         }
@@ -59,12 +69,15 @@ angular.module('myApp', [])
             while (!consFound) {
                 let randNum = Math.floor(Math.random() * consElems.length);
                 let possOnset = consElems.item(randNum);
+                console.log(possOnset);
                 if (possOnset.checked) {
                     onsetLetter = possOnset.id + '';
+                    console.log(onsetLetter);
                     consFound = true;
                 }
             }
             onset += onsetLetter;
+            console.log(onset);
         }
         for (let k = 0; k < numCoda; k++) {
             let consFound = false;
@@ -72,14 +85,18 @@ angular.module('myApp', [])
             while (!consFound) {
                 let randNum = Math.floor(Math.random() * consElems.length);
                 let possCoda = consElems.item(randNum);
+                console.log(possCoda);
                 if (possCoda.checked) {
                     codaLetter = possCoda.id + '';
+                    console.log(codaLetter);
                     consFound = true;
                 }
             }
             coda += codaLetter;
+            console.log(coda);
         }
         let newSyllable = onset + vowel + coda;
+        console.log(newSyllable);
         return newSyllable;
     }
     
@@ -135,12 +152,10 @@ angular.module('myApp', [])
     }
 
     $scope.uploadFile = function() {
-        console.log("Opening file...");
-        console.log(document.getElementById("fileUpload"));
         console.log(document.getElementById("fileUpload").files);
         let fileInput = document.getElementById("fileUpload").files[0];
-        console.log(fileInput);
-        $scope.words = JSON.parse(fileInput);
+        console.log(fileInput.text());
+        $scope.words = JSON.parse(fileInput.text());
         console.log($scope.words);
     }
 
