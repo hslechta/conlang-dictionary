@@ -3,6 +3,10 @@ body {
     background-color: lightblue;
 }
 
+h1, div {
+    margin-left: 20px;
+}
+
 fieldset {
     margin: 10px;
 }
