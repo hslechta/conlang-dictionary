@@ -25,6 +25,33 @@ angular.module('myApp', [])
     $scope.generateWords = function() {
         console.log("Generating words...");
         console.log($scope.generator);
+        let syllables = Math.floor(Math.random() * $scope.generator.syllableCount);
+        let onsets = Math.floor(Math.random() * generator.onsetConsCount);
+        let codas = Math.floor(Math.random() * generator.codaConsCount);
+        let generatedWord = {lemma: '', definition: 'def', category: 'cat'};
+        for (let i = 0; i < syllables; i++) {
+            let syll = generateSyllable(onsets, codas);
+            generatedWord.lemma += syll;
+        }
+        $scope.words.push(generatedWord);
+    }
+
+    generateSyllable = function(numOnset, numCoda) {
+        let vowelElems = document.getElementsByClassName('vowel');
+        let consElems = document.getElementsByClassName('consonant');
+        let vowel = vowelElems.item(Math.floor(Math.random() * vowelElems.length)).id;
+        let onset = '';
+        let coda = '';
+        for (let j = 0; j < numOnset; j++) {
+            let onsetLetter = consElems.item(Math.floor(Math.random() * consElems.length)).id;
+            onset += onsetLetter;
+        }
+        for (let k = 0; k < numCoda; k++) {
+            let codaLetter = consElems.item(Math.floor(Math.random() * consElems.length)).id;
+            coda += codaLetter;
+        }
+        let newSyllable = onset + vowel + coda;
+        return newSyllable;
     }
     
     $scope.checkWord = function(index) {
@@ -80,7 +107,9 @@ angular.module('myApp', [])
 
     $scope.uploadFile = function() {
         console.log("Opening file...");
-        let fileInput = document.getElementById(fileUpload)?.files[0];
+        console.log(document.getElementById(fileUpload));
+        console.log(document.getElementById(fileUpload).file);
+        let fileInput = document.getElementById(fileUpload).file;
         console.log(fileInput);
         $scope.words = JSON.parse(fileInput);
         console.log($scope.words);
